@@ -1,0 +1,40 @@
+networks:
+  lodashventure:
+    driver: bridge
+
+services:
+  strapi:
+    image: strapi
+    container_name: strapi
+    restart: always
+    build:
+      context: ./backend/strapi
+    env_file: ./.env
+    volumes:
+      - ./data:/usr/src/app/data
+    ports:
+      - 1337:1337
+    networks:
+      - lodashventure
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1337/healthcheck"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
+  frontend: # service
+    container_name: frontend # container name
+    image: frontend
+    build:
+      context: ./frontend/home
+      dockerfile: spa.Dockerfile
+      args:
+        - API_SECRET=mysecretkey
+        - NUXT_PUBLIC_API_URL=https://api.lodashventure.com/v2/223233
+    ports:
+      - 3000:80
+    networks:
+      - lodashventure
+    env_file:
+      - ./.env

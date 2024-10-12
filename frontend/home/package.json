@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@nuxtjs/strapi": "^1.12.0",
+    "nuxt": "^3.13.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5"
+  },
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "build:spa": "nuxt generate --spa",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview",
+    "start": "nuxt start"
+  },
+  "type": "module"
+}

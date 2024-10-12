@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@nuxtjs/strapi": "^1.12.0"
+  }
+}
